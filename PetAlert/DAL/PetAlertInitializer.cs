@@ -14,7 +14,8 @@ namespace PetAlert.DAL
         {
             var animalTypes = new List<AnimalType>
             {
-                new AnimalType { AnimalTypeID=1,Name="Cat" }
+                new AnimalType { AnimalTypeID=1,Name="Cat" },
+                new AnimalType { AnimalTypeID=2,Name="Dog" }
             };
             animalTypes.ForEach(s => context.AnimalType.Add(s));
             context.SaveChanges();

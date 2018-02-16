@@ -21,8 +21,8 @@ namespace PetAlert.DAL
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Entity<Animal>()
-                .HasKey(c => c.AnimalType);
+            //modelBuilder.Entity<Animal>()
+            //    .HasKey(c => c.Animal);
         }
     }
 }

@@ -171,6 +171,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnimalController.cs" />
+    <Compile Include="Controllers\AnimalTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WantedAdController.cs" />
@@ -255,6 +256,11 @@
     <Content Include="Views\WantedAd\Details.cshtml" />
     <Content Include="Views\WantedAd\Edit.cshtml" />
     <Content Include="Views\WantedAd\Index.cshtml" />
+    <Content Include="Views\AnimalType\Create.cshtml" />
+    <Content Include="Views\AnimalType\Delete.cshtml" />
+    <Content Include="Views\AnimalType\Details.cshtml" />
+    <Content Include="Views\AnimalType\Edit.cshtml" />
+    <Content Include="Views\AnimalType\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
