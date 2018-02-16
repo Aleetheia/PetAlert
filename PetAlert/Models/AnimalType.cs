@@ -4,13 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace PetAlert.Models
 {
     public class AnimalType
     {
         [Key]
-        [ForeignKey("AnimalType")]
+        
         public int AnimalTypeID { get; set; }
         [Required]
         [Display(Name = "Type d'animal")]

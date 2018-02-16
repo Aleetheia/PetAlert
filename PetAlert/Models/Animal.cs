@@ -9,6 +9,7 @@ namespace PetAlert.Models
 {
     public class Animal
     {
+        [Key]
         public int AnimalID { get; set;}
         public string Name { get; set; }
         [ForeignKey("AnimalType")]

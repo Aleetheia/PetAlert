@@ -14,7 +14,9 @@ namespace PetAlert.Models
         [Required]
         public string Title { get; set; }
         [Required]
+        [ForeignKey("Animal")]
         public int AnimalID { get; set; }
+        public virtual Animal Animal { get; set; }
         public int AnimalTypeID { get; set; }
         public int AuthorID { get; set; }
         public int TownID { get; set; }
