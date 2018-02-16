@@ -1,0 +1,69 @@
+﻿@model IEnumerable<PetAlert.Models.WantedAd>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnimalID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnimalTypeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TownID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Finished)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnimalID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnimalTypeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TownID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Finished)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WantedAdID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WantedAdID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WantedAdID })
+        </td>
+    </tr>
+}
+
+</table>
