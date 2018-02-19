@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<PetAlert.Models.WantedAd>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Liste des avis de recherche";
 }
 
-<h2>Index</h2>
+<h2>Liste des avis de recherche</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Créer un avis de recherche", "Create")
 </p>
 <table class="table">
     <tr>
@@ -21,10 +21,10 @@
             @Html.DisplayNameFor(model => model.AnimalTypeID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AuthorID)
+            @Html.DisplayNameFor(model => model.Author.FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TownID)
+            @Html.DisplayNameFor(model => model.Town.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
@@ -41,16 +41,16 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AnimalID)
+            @Html.DisplayFor(modelItem => item.Animal.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AnimalTypeID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AuthorID)
+            @Html.DisplayFor(modelItem => item.Author.FirstName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TownID)
+            @Html.DisplayFor(modelItem => item.Town.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)
@@ -59,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.Finished)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.WantedAdID }) |
+            @Html.ActionLink("Editer", "Edit", new { id=item.WantedAdID }) |
             @Html.ActionLink("Details", "Details", new { id=item.WantedAdID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.WantedAdID })
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.WantedAdID })
         </td>
     </tr>
 }

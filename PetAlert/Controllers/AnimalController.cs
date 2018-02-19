@@ -132,5 +132,13 @@ namespace PetAlert.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public partial class DropDownListController : Controller
+        {
+            public ActionResult Index()
+            {
+                return View();
+            }
+        }
     }
 }

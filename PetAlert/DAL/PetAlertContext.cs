@@ -20,9 +20,11 @@ namespace PetAlert.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            //modelBuilder.Entity<Animal>()
-            //    .HasKey(c => c.Animal);
+            //modelBuilder.Entity<AnimalType>()
+            //        .HasRequired(m => m.Name)
+            //        .WithMany(t => t.Name)
+            //        .HasForeignKey(m => m.AnimalTypeID)
+            //        .WillCascadeOnDelete(true);
         }
     }
 }

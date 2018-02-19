@@ -1,19 +1,18 @@
 ﻿@model IEnumerable<PetAlert.Models.Animal>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Animaux";
 }
 
-<h2>Index</h2>
+<h2>Liste des animaux enregistrés</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Ajouter un animal", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.ActionLink("Nom", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AnimalType.Name)
@@ -41,9 +40,9 @@
             @Html.DisplayFor(modelItem => item.Lost)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AnimalID }) |
+            @Html.ActionLink("Editer", "Edit", new { id=item.AnimalID }) |
             @Html.ActionLink("Details", "Details", new { id=item.AnimalID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AnimalID })
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.AnimalID })
         </td>
     </tr>
 }

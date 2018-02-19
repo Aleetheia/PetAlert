@@ -11,8 +11,8 @@ namespace PetAlert.Models
     public class AnimalType
     {
         [Key]
-        
         public int AnimalTypeID { get; set; }
+
         [Required]
         [Display(Name = "Type d'animal")]
         public string Name { get; set; }

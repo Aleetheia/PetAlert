@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<PetAlert.Models.AnimalType>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Types d'animaux";
 }
 
-<h2>Index</h2>
+<h2>Liste des types d'animaux enregistrés</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Ajouter un type d'animal", "Create")
 </p>
 <table class="table">
     <tr>
@@ -23,9 +23,8 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AnimalTypeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AnimalTypeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AnimalTypeID })
+            @Html.ActionLink("Editer", "Edit", new { id=item.AnimalTypeID }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.AnimalTypeID })
         </td>
     </tr>
 }
