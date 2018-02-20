@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAlert", "PetAlert\PetAlert.csproj", "{9623D8A0-A563-4CA6-A856-24ECD2DB25DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animal.DataAccessLayer", "Animal.DataAccessLayer\Animal.DataAccessLayer.csproj", "{F616CDC6-C1AB-4B81-98D0-45D8A2FD1052}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9623D8A0-A563-4CA6-A856-24ECD2DB25DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9623D8A0-A563-4CA6-A856-24ECD2DB25DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9623D8A0-A563-4CA6-A856-24ECD2DB25DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F616CDC6-C1AB-4B81-98D0-45D8A2FD1052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F616CDC6-C1AB-4B81-98D0-45D8A2FD1052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F616CDC6-C1AB-4B81-98D0-45D8A2FD1052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F616CDC6-C1AB-4B81-98D0-45D8A2FD1052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

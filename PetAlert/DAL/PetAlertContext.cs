@@ -14,17 +14,10 @@ namespace PetAlert.DAL
         public DbSet<AnimalType> AnimalType { get; set; }
         public DbSet<Animal> Animal { get; set; }
         public DbSet<WantedAd> WantedAd { get; set; }
-        public DbSet<Author> Author { get; set; }
-        public DbSet<Town> Town { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            //modelBuilder.Entity<AnimalType>()
-            //        .HasRequired(m => m.Name)
-            //        .WithMany(t => t.Name)
-            //        .HasForeignKey(m => m.AnimalTypeID)
-            //        .WillCascadeOnDelete(true);
         }
     }
 }

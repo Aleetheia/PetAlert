@@ -1,4 +1,4 @@
-﻿@model PetAlert.Models.WantedAd
+﻿@model PetAlert.Models.AnimalModel
 
 @{
     ViewBag.Title = "Details";
@@ -10,64 +10,64 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.WantedAd.Title)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.WantedAd.Title)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AnimalID)
+            @Html.DisplayNameFor(model => model.Animal.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AnimalID)
+            @Html.DisplayFor(model => model.Animal.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AnimalTypeID)
+            @Html.DisplayNameFor(model => model.Animal.AnimalType)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AnimalTypeID)
+            @Html.DisplayFor(model => model.Animal.AnimalType)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AuthorID)
+            @Html.DisplayNameFor(model => model.Author)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AuthorID)
+            @Html.DisplayFor(model => model.Author)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TownID)
+            @Html.DisplayNameFor(model => model.Town)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TownID)
+            @Html.DisplayFor(model => model.Town)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.WantedAd.Date)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Date)
+            @Html.DisplayFor(model => model.WantedAd.Date)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Finished)
+            @Html.DisplayNameFor(model => model.WantedAd.Finished)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Finished)
+            @Html.DisplayFor(model => model.WantedAd.Finished)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editer", "Edit", new { id = Model.WantedAdID }) |
+    @Html.ActionLink("Editer", "Edit", new { id = Model.WantedAd.WantedAdID }) |
     @Html.ActionLink("Retour à la liste", "Index")
 </p>

@@ -1,4 +1,4 @@
-﻿@model PetAlert.Models.Animal
+﻿@model PetAlert.Models.AnimalModel
 
 @{
     ViewBag.Title = "Edition";
@@ -14,38 +14,38 @@
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.AnimalID)
+        @Html.HiddenFor(model => model.Animal.AnimalID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Animal.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Animal.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animal.Name, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AnimalTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Animal.AnimalTypeID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AnimalTypeID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AnimalTypeID, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.Animal.AnimalTypeID,Model.AnimalTypes.Select(x => new SelectListItem { Value = x.AnimalTypeID.ToString(), Text = x.Name }).ToList(),new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Animal.AnimalTypeID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Animal.Age, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Animal.Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animal.Age, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Lost, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Animal.Lost, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.Lost)
-                    @Html.ValidationMessageFor(model => model.Lost, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Animal.Lost)
+                    @Html.ValidationMessageFor(model => model.Animal.Lost, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>

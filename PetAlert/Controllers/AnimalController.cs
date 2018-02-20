@@ -49,10 +49,16 @@ namespace PetAlert.Controllers
         }
 
         // GET: Animal/Create
-        public ActionResult Create([Bind(Include ="Name, AnimalTypeID, Age, Lost")]Animal animal)
+        public ActionResult Create([Bind(Include = "Name, AnimalTypeID, Age, Lost")]Animal animal)
         {
+            AnimalModel animalModel = null;
             try
             {
+                animalModel = new AnimalModel()
+                {
+                    Animal = animal,
+                    AnimalTypes = db.AnimalType.ToList()
+                };
                 if (ModelState.IsValid)
                 {
                     db.Animal.Add(animal);
@@ -64,12 +70,14 @@ namespace PetAlert.Controllers
             {
                 ModelState.AddModelError("", "Erreur");
             }
-            return View(animal);
+            return View(animalModel);
         }
 
         // GET: Animal/Edit/5
         public ActionResult Edit(int? id)
         {
+
+            AnimalModel animalModel = null;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -79,66 +87,74 @@ namespace PetAlert.Controllers
             {
                 return HttpNotFound();
             }
-            return View(animal);
-        }
-
-        // POST: Animal/Edit/5
-        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AnimalID,Name,AnimalTypeID,Age,Lost")] Animal animal)
-        {
-            if (ModelState.IsValid)
+            else
             {
-                db.Entry(animal).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(animal);
+                 animalModel = new AnimalModel()
+                {
+                    Animal = animal,
+                    AnimalTypes = db.AnimalType.ToList()
+            };
         }
+            return View(animalModel);
+    }
 
-        // GET: Animal/Delete/5
-        public ActionResult Delete(int? id)
+    // POST: Animal/Edit/5
+    // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
+    // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Edit([Bind(Include = "AnimalID,Name,AnimalTypeID,Age,Lost")] Animal animal)
+    {
+        if (ModelState.IsValid)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Animal animal = db.Animal.Find(id);
-            if (animal == null)
-            {
-                return HttpNotFound();
-            }
-            return View(animal);
-        }
-
-        // POST: Animal/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Animal animal = db.Animal.Find(id);
-            db.Animal.Remove(animal);
+            db.Entry(animal).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        return View(animal);
+    }
 
-        protected override void Dispose(bool disposing)
+    // GET: Animal/Delete/5
+    public ActionResult Delete(int? id)
+    {
+        if (id == null)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
-
-        public partial class DropDownListController : Controller
+        Animal animal = db.Animal.Find(id);
+        if (animal == null)
         {
-            public ActionResult Index()
-            {
-                return View();
-            }
+            return HttpNotFound();
+        }
+        return View(animal);
+    }
+
+    // POST: Animal/Delete/5
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public ActionResult DeleteConfirmed(int id)
+    {
+        Animal animal = db.Animal.Find(id);
+        db.Animal.Remove(animal);
+        db.SaveChanges();
+        return RedirectToAction("Index");
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            db.Dispose();
+        }
+        base.Dispose(disposing);
+    }
+
+    public partial class DropDownListController : Controller
+    {
+        public ActionResult Index()
+        {
+            return View();
         }
     }
+}
 }

@@ -71,6 +71,10 @@ namespace PetAlert.Controllers
             {
                 return HttpNotFound();
             }
+            else
+            {
+                RedirectToAction("Index");
+            }
             return View(animalType);
         }
 
