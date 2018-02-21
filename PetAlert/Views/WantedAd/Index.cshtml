@@ -15,10 +15,10 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Animal.Name)
+            @Html.DisplayNameFor(model => model.Animal)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AnimalType.Name)
+            @Html.DisplayNameFor(model => model.AnimalType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Author)
@@ -29,10 +29,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Finished)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -41,10 +37,10 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Animal.Name)
+            @Html.DisplayFor(modelItem => item.Animal)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AnimalType.Name);
+            @Html.DisplayFor(modelItem => item.AnimalType)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Author)
@@ -56,12 +52,11 @@
             @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Finished)
-        </td>
-        <td>
-            @Html.ActionLink("Editer", "Edit", new { id=item.WantedAdID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.WantedAdID }) |
-            @Html.ActionLink("Supprimer", "Delete", new { id=item.WantedAdID })
+            @Html.ActionLink("Editer", "Edit", new { id = item.WantedAdID }, new { @class = "btn btn-warning btn-sm" })
+            <br />
+            @Html.ActionLink("Details", "Details", new { id = item.WantedAdID }, new { @class = "btn btn-info btn-sm" })
+            <br />
+            @Html.ActionLink("Supprimer", "Delete", new { id = item.WantedAdID }, new { @class = "btn btn-danger btn-sm" })
         </td>
     </tr>
 }

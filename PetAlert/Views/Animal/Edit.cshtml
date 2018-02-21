@@ -1,10 +1,10 @@
 ﻿@model PetAlert.Models.AnimalModel
 
 @{
-    ViewBag.Title = "Edition";
+    ViewBag.Title = "Modification";
 }
 
-<h2>Edition de l'animal</h2>
+<h2>Modifier les informations</h2>
 
 
 @using (Html.BeginForm())
@@ -33,10 +33,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Animal.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Animal.Colour, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Animal.Age, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Animal.Age, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Animal.Colour, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Animal.Colour, "", new { @class = "text-danger" })
             </div>
         </div>
 

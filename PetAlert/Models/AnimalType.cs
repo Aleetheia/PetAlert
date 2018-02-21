@@ -11,6 +11,7 @@ namespace PetAlert.Models
     public class AnimalType
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AnimalTypeID { get; set; }
 
         [Required]

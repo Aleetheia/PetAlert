@@ -9,27 +9,25 @@ namespace PetAlert.Models
 {
     public class WantedAd
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int WantedAdID { get; set; }
 
         [Required]
-        [Display(Name = "Titre de l'annonce")]
+        [Display(Name = "Titre")]
         public string Title { get; set; }
-        
-        [ForeignKey("Animal")]
-        public int AnimalID { get; set; }
-        public virtual Animal Animal { get; set; }
 
-        public int AnimalTypeID { get; set; }
-        public virtual AnimalType AnimalType { get { return Animal?.AnimalType; } }
+        [Display(Name = "Nom")]
+        public string Animal { get; set; }
+        [Display(Name = "Typel")]
+        public string AnimalType { get; set; }
 
-        [Display(Name = "Auteur de l'avis")]
+        [Display(Name = "Auteur")]
         public string Author { get; set; }
 
         [Display(Name = "Ville")]
         public string Town { get; set; }
 
-        [Display(Name = "Date de publication")]
+        [Display(Name = "Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         public DateTime Date { get; set; }

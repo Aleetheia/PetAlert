@@ -14,7 +14,6 @@ namespace PetAlert.Controllers
     public class WantedAdController : Controller
     {
         private PetAlertContext db = new PetAlertContext();
-        //private WantedAd wantedAd;
 
         // GET: WantedAd
         public ActionResult Index()
@@ -25,55 +24,46 @@ namespace PetAlert.Controllers
         // GET: WantedAd/Details/5
         public ActionResult Details(int? id)
         {
-            AnimalModel animalModel = null;
-            animalModel = new AnimalModel();
-            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             WantedAd wantedAd = db.WantedAd.Find(id);
-
             if (wantedAd == null)
             {
                 return HttpNotFound();
             }
-            return View(animalModel);
+            return View(wantedAd);
         }
 
 
 
         // GET: WantedAd/Create
-        public ActionResult Create([Bind(Include = "WantedAdID,Title,AnimalID,AnimalTypeID,Author,Town,Date,Finished")] WantedAd wantedAd)
+        public ActionResult Create()
         {
-            AnimalModel animalModel = null;
-            try
-            {
-                animalModel = new AnimalModel()
-                {
-                    WantedAd = wantedAd,
-                    Animals     = db.Animal.ToList(),
-                    AnimalTypes = db.AnimalType.ToList()
-                };
-                if (ModelState.IsValid)
-                {
-                    db.WantedAd.Add(wantedAd);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-            }
-            catch (DataException)
-            {
-                ModelState.AddModelError("", "Erreur");
-            }
-            return View(animalModel);
+            return View();
         }
-        
+
+        // POST: WantedAd/Create
+        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
+        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "WantedAdID,Title, Animal, AnimalType,Author,Town,Date,Finished")] WantedAd wantedAd)
+        {
+            if (ModelState.IsValid)
+            {
+                db.WantedAd.Add(wantedAd);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(wantedAd);
+        }
+
         // GET: WantedAd/Edit/5
         public ActionResult Edit(int? id)
         {
-
-            AnimalModel animalModel = null;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -85,15 +75,9 @@ namespace PetAlert.Controllers
             }
             else
             {
-                animalModel = new AnimalModel()
-                {
-                    WantedAd = wantedAd,
-                    AnimalTypes = db.AnimalType.ToList(),
-                    Animals = db.Animal.ToList()
-                    
-            };
+                RedirectToAction("Index");
             }
-            return View(animalModel);
+            return View(wantedAd);
         }
 
         // POST: AnimalType/Edit/5
@@ -101,7 +85,7 @@ namespace PetAlert.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "WantedAdID,Title,AnimalID,AnimalTypeID,Author,Town,Date,Finished")] WantedAd wantedAd)
+        public ActionResult Edit(WantedAd wantedAd)
         {
             if (ModelState.IsValid)
             {

@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<PetAlert.Models.Animal>
 
 @{
-    ViewBag.Title = "Animaux";
+    ViewBag.Title = "Animaux errants";
 }
 
-<h2>Liste des animaux enregistrés</h2>
+<h2>Animaux errants</h2>
 
 <p>
-    @Html.ActionLink("Ajouter un animal", "Create")
+    @Html.ActionLink("Ajouter un animal errant", "Create")
 </p>
 <table class="table">
     <tr>
@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.AnimalType.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Age)
+            @Html.DisplayNameFor(model => model.Colour)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Lost)
@@ -34,15 +34,15 @@
             @Html.DisplayFor(modelItem => item.AnimalType.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Age)
+            @Html.DisplayFor(modelItem => item.Colour)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Lost)
         </td>
         <td>
-            @Html.ActionLink("Editer", "Edit", new { id=item.AnimalID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AnimalID }) |
-            @Html.ActionLink("Supprimer", "Delete", new { id=item.AnimalID })
+            @Html.ActionLink("Editer", "Edit", new { id=item.AnimalID }, new { @class="btn btn-warning btn-sm" })
+            @Html.ActionLink("Details", "Details", new { id=item.AnimalID }, new { @class = "btn btn-info btn-sm" })
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.AnimalID }, new { @class = "btn btn-danger btn-sm" })
         </td>
     </tr>
 }
