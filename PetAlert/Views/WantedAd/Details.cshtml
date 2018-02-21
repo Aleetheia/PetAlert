@@ -34,19 +34,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Author)
+            @Html.DisplayNameFor(model => model.WantedAd.Author)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Author)
+            @Html.DisplayFor(model => model.WantedAd.Author)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Town)
+            @Html.DisplayNameFor(model => model.WantedAd.Town)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Town)
+            @Html.DisplayFor(model => model.WantedAd.Town)
         </dd>
 
         <dt>
@@ -68,6 +68,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editer", "Edit", new { id = Model.WantedAd.WantedAdID }) |
     @Html.ActionLink("Retour à la liste", "Index")
 </p>

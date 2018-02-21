@@ -25,17 +25,24 @@ namespace PetAlert.Controllers
         // GET: WantedAd/Details/5
         public ActionResult Details(int? id)
         {
+            AnimalModel animalModel = null;
+            animalModel = new AnimalModel();
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             WantedAd wantedAd = db.WantedAd.Find(id);
+
             if (wantedAd == null)
             {
                 return HttpNotFound();
             }
-            return View(wantedAd);
+            return View(animalModel);
         }
+
+
+
         // GET: WantedAd/Create
         public ActionResult Create([Bind(Include = "WantedAdID,Title,AnimalID,AnimalTypeID,Author,Town,Date,Finished")] WantedAd wantedAd)
         {
@@ -58,10 +65,6 @@ namespace PetAlert.Controllers
             catch (DataException)
             {
                 ModelState.AddModelError("", "Erreur");
-            }
-            catch(Exception ex)
-            {
-
             }
             return View(animalModel);
         }
