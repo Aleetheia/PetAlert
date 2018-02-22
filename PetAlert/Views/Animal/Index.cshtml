@@ -6,16 +6,13 @@
 
 <h2>Animaux errants</h2>
 
-<p>
-    @Html.ActionLink("Ajouter un animal errant", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Nom", "Index", new { sortOrder = ViewBag.NameSortParm })
+            @Html.ActionLink("Ville", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AnimalType.Name)
+            @Html.DisplayNameFor(model => model.AnimalType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Colour)
@@ -28,10 +25,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.Town)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AnimalType.Name)
+            @Html.DisplayFor(modelItem => item.AnimalType)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Colour)
@@ -46,5 +43,9 @@
         </td>
     </tr>
 }
+
+    <p>
+        @Html.ActionLink("Ajouter un animal errant", "Create", null, new { @class = "btn btn-success" })
+    </p>
 
 </table>

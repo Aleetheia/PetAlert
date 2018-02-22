@@ -24,10 +24,10 @@ namespace PetAlert.Controllers
             switch (sortOrder)
             {
                 case "name_desc":
-                    animals = animals.OrderByDescending(s => s.Name);
+                    animals = animals.OrderByDescending(s => s.Town);
                     break;
                 case "type_desc":
-                    animals = animals.OrderByDescending(s => s.AnimalTypeID);
+                    animals = animals.OrderByDescending(s => s.AnimalType);
                     break;
             }
             return View(db.Animal.ToList());
@@ -49,35 +49,31 @@ namespace PetAlert.Controllers
         }
 
         // GET: Animal/Create
-        public ActionResult Create([Bind(Include = "Name, AnimalTypeID, Age, Lost")]Animal animal)
+        public ActionResult Create()
         {
-            AnimalModel animalModel = null;
-            try
+            return View();
+        }
+
+        // POST: Animal/Create
+        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
+        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "AnimalID,Town,AnimalType,Colour,Lost")] Animal animal)
+        {
+            if (ModelState.IsValid)
             {
-                animalModel = new AnimalModel()
-                {
-                    Animal = animal,
-                    AnimalTypes = db.AnimalType.ToList()
-                };
-                if (ModelState.IsValid)
-                {
-                    db.Animal.Add(animal);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+                db.Animal.Add(animal);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch (DataException)
-            {
-                ModelState.AddModelError("", "Erreur");
-            }
-            return View(animalModel);
+
+            return View(animal);
         }
 
         // GET: Animal/Edit/5
         public ActionResult Edit(int? id)
         {
-
-            AnimalModel animalModel = null;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -89,21 +85,17 @@ namespace PetAlert.Controllers
             }
             else
             {
-                 animalModel = new AnimalModel()
-                {
-                    Animal = animal,
-                    AnimalTypes = db.AnimalType.ToList()
-            };
+                RedirectToAction("Index");
+            }
+            return View(animal);
         }
-            return View(animalModel);
-    }
 
-    // POST: Animal/Edit/5
-    // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-    // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
+        // POST: Animal/Edit/5
+        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
+        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit([Bind(Include = "AnimalID,Name,AnimalTypeID,Age,Lost")] Animal animal)
+    public ActionResult Edit([Bind(Include = "AnimalID,Town,AnimalType,Colour,Lost")] Animal animal)
     {
         if (ModelState.IsValid)
         {

@@ -12,6 +12,16 @@ namespace PetAlert.DAL
     {
         protected override void Seed(PetAlertContext context)
         {
+            var wantedAds = new List<WantedAd>
+            {
+                new WantedAd { WantedAdID=1,Title="Chatounne perdue",Animal= "Felix",AnimalType="Chat",Author="Benjamin",Town="Nantes",Date=DateTime.Now,Finished=false },
+                new WantedAd { WantedAdID=2,Title="Où est Medor ?",Animal= "Medor", AnimalType="Chien",Author="Laura",Town="Paris",Date=DateTime.Now,Finished=false },
+                new WantedAd { WantedAdID=3,Title="Et la marmotte...",Animal= "Aspirine", AnimalType="Lapin",Author="Emmanuel",Town="Lyon",Date=DateTime.Now,Finished=false },
+                new WantedAd { WantedAdID=4,Title="J'ai crié par la fenêtre",Animal= "Felicity",AnimalType="Chat",Author="Michelle",Town="Nantes",Date=DateTime.Now,Finished=false }
+            };
+            wantedAds.ForEach(s => context.WantedAd.Add(s));
+            context.SaveChanges();
+
             var animalTypes = new List<AnimalType>
             {
                 new AnimalType {  AnimalTypeID=1, Name="Cat" },
@@ -22,19 +32,14 @@ namespace PetAlert.DAL
 
             var animals = new List<Animal>
             {
-                new Animal { AnimalID=1,Name="Felisse",AnimalTypeID=1,Colour="Red",Lost=true },
-                new Animal { AnimalID=2,Name="Chouchou",AnimalTypeID=2,Colour="Blue",Lost=true },
-                new Animal { AnimalID=3,Name="Sushi",AnimalTypeID=1,Colour="Grey",Lost=true }
+                new Animal { AnimalID=1,Town="Paris",AnimalType="Cat",Colour="Red",Lost=true },
+                new Animal { AnimalID=2,Town="Nantes",AnimalType="Dog",Colour="Blue",Lost=true },
+                new Animal { AnimalID=3,Town="Lyon",AnimalType="Dog",Colour="Gris",Lost=true }
             };
             animals.ForEach(s => context.Animal.Add(s));
             context.SaveChanges();
 
-            //var wantedAds = new List<WantedAd>
-            //{
-            //    new WantedAd { WantedAdID=1,Title="Chatounne perdue",AnimalID=1, AnimalTypeID=1,Author="Emmanuel",Town="Nantes",Date=DateTime.Now,Finished=false }
-           // };
-            //wantedAds.ForEach(s => context.WantedAd.Add(s));
-           // context.SaveChanges();
+
         }
     }   
 }

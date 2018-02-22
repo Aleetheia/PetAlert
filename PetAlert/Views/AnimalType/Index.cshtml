@@ -6,9 +6,6 @@
 
 <h2>Liste des types d'animaux enregistrés</h2>
 
-<p>
-    @Html.ActionLink("Ajouter un type d'animal", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -28,5 +25,7 @@
         </td>
     </tr>
 }
+
+@Html.ActionLink("Ajouter un type d'animal", "Create", null, new { @class = "btn btn-success" })
 
 </table>

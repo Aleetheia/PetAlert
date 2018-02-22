@@ -18,7 +18,7 @@ namespace PetAlert.Models
 
         [Display(Name = "Nom")]
         public string Animal { get; set; }
-        [Display(Name = "Typel")]
+        [Display(Name = "Type")]
         public string AnimalType { get; set; }
 
         [Display(Name = "Auteur")]

@@ -14,18 +14,16 @@ namespace PetAlert.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AnimalID { get; set; }
 
-        [Display(Name = "Nom")]
-        public string Name { get; set; }
+        [Display(Name = "Ville")]
+        public string Town { get; set; }
         
         [Display(Name = "Type d'animal")]
-        [ForeignKey("AnimalType")]
-        public int AnimalTypeID { get; set; }
-        public virtual AnimalType AnimalType { get; set; }
+        public string AnimalType { get; set; }
 
         [Display(Name = "Couleur")]
         public string Colour { get; set; }
 
-        [Display(Name = "Perdu ?")]
+        [Display(Name = "Collier ou tatouage ?")]
         public bool Lost { get; set; }
     }
 }
